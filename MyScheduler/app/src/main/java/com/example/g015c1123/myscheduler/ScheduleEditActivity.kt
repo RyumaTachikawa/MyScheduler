@@ -16,12 +16,11 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.support.v4.app.FragmentActivity
 import android.widget.DatePicker
-import android.widget.TimePicker
 
-class ScheduleEditActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+
+class ScheduleEditActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
     private lateinit var realm: Realm
 
     @SuppressLint("RestrictedApi")
@@ -137,19 +136,5 @@ class ScheduleEditActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetList
         newFragment.show(supportFragmentManager, "datePicker")
 
     }
-    override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
 
-        val str = String.format(Locale.US, "%d:%d", hourOfDay, minute)
-
-        // use the plug in of Kotlin Android Extensions
-        textView2.text = str
-
-    }
-
-    // called by Buttton tapping
-    fun showTimalog(v: View) {
-        val newFragment = TimePick()
-        newFragment.show(supportFragmentManager, "timePicker")
-
-    }
 }
