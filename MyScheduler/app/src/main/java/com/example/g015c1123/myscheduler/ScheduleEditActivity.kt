@@ -15,12 +15,8 @@ import org.jetbrains.anko.yesButton
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import android.app.DatePickerDialog
-import android.support.v4.app.FragmentActivity
-import android.widget.DatePicker
 
-
-class ScheduleEditActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
+class ScheduleEditActivity : AppCompatActivity() {
     private lateinit var realm: Realm
 
     @SuppressLint("RestrictedApi")
@@ -122,19 +118,4 @@ class ScheduleEditActivity : AppCompatActivity(), DatePickerDialog.OnDateSetList
         }
         return date
     }
-
-
-    override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int) {
-
-        var str = String.format(Locale.US, "%d/%d/%d", year, monthOfYear+1, dayOfMonth)
-        dateEdit.text = str
-    }
-
-
-    fun showDatePickerDialog(v: View) {
-        val newFragment = DatePick()
-        newFragment.show(supportFragmentManager, "datePicker")
-
-    }
-
 }
