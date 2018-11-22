@@ -1,13 +1,11 @@
 package com.example.g015c1123.myscheduler
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import io.realm.Realm
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.list_item.view.*
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {

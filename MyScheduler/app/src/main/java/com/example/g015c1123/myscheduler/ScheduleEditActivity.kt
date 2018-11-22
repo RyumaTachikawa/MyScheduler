@@ -4,19 +4,24 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_schedule_edit.*
+import kotlinx.android.synthetic.main.activity_schedule_edit.view.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.yesButton
+import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ScheduleEditActivity : AppCompatActivity() {
+class ScheduleEditActivity : AppCompatActivity()
+    ,DatePickerFragment.OnDateSelectedListener
+    ,TimePickerFragment.OnTimeSelectedListener{
     private lateinit var realm: Realm
 
     @SuppressLint("RestrictedApi")
@@ -117,5 +122,15 @@ class ScheduleEditActivity : AppCompatActivity() {
             }
         }
         return date
+    }
+
+    override fun onSelected(year: Int, month: Int, date: Int) {
+        val c=Calendar.getInstance()
+        c.set(year,month,date)
+        dateEdit.text= android.text.format.DateFormat.format("yyyy/MM/dd",c)
+    }
+
+    override fun onSelected(hourOfDay: Int, minute: Int) {
+        timeEdit.text="%1$02d:%2$02d".format(hourOfDay,minute)
     }
 }
